@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Build
+dist/
+build/
+
+# OS and Editor
+.DS_Store
+.env
+.env.local
+.vscode/
+.idea/
+
+# Dependency resolution
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

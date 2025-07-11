@@ -1,0 +1,38 @@
+{
+  "name": "inventory-management",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "seed": "node db/createDb.js",
+    "build:css": "npx tailwindcss -i ./public/main.css -o ./public/output.css --watch",
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samir-ahajin/inventory-management.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samir-ahajin/inventory-management/issues"
+  },
+  "homepage": "https://github.com/samir-ahajin/inventory-management#readme",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "dotenv": "^17.0.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-validator": "^7.2.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11"
+  }
+}

@@ -1,0 +1,15 @@
+<div class="max-w-4xl mx-auto space-y-6">
+  <!-- Category Dropdown -->
+  <label for="categoryDropdown" class="block text-sm font-medium text-gray-700">Select Category</label>
+  <select id="categoryDropdown" class="border rounded px-4 py-2 w-full sm:w-64">
+    <option value="all">All</option>
+    <% categories.forEach(cat => { %>
+      <option value="<%= cat.category %>"><%= cat.category.charAt(0).toUpperCase() + cat.category.slice(1) %></option>
+    <% }) %>
+  </select>
+
+  <!-- Product list -->
+  <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <%- include('../partials/products', { products }) %>
+  </div>
+</div>

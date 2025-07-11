@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sidebar Layout</title>
+   <link href="./output.css" rel="stylesheet">
+</head>
+<body class="flex min-h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <div id="sidebar" class="w-64 bg-white border-r transition-all duration-300">
+    <div class="flex items-center justify-between p-4 border-b">
+      <h1 class="text-lg font-bold">Menu</h1>
+      <!-- <button onclick="toggleSidebar()" class="text-gray-500 hover:text-black">
+        ☰
+      </button> -->
+    </div>
+    <ul class="p-4 space-y-2">
+      <li><a href="#" onclick="loadContent('dashboard')" class="navselect block px-2 py-1 hover:bg-gray-200 rounded">Dashboard</a></li>
+      <li><a href="#" onclick="loadContent('products')" class="navselect block px-2 py-1 hover:bg-gray-200 rounded">All Products</a></li>
+       <li><a href="#" onclick="loadContent('items')" class="navselect block px-2 py-1 hover:bg-gray-200 rounded">Update/Add Item</a></li>
+      <li><a href="#" class="navselect block px-2 py-1 hover:bg-gray-200 rounded">Settings</a></li>
+      
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content" class="flex-1 p-6 transition-all duration-300">
+    <%- body %>
+  </div>
+
+<!-- <script type="module" src="/js/tabs.js"></script> -->
+<script src="/js/sidebar.js"></script>
+<script src="/js/productFilter.js"></script>
+
+</body>
+</html>

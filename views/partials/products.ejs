@@ -1,0 +1,25 @@
+ 
+  <% if (products.length === 0) { %>
+  <div class="col-span-full text-gray-500">No products found.</div>
+<% } else { %>
+  <% products.forEach(product => { %>
+   <div class="p-4 bg-white border rounded shadow w-full max-w-sm">
+  <img 
+    src="<%= product.image_sample %>" 
+    alt="<%= product.product_name %>" 
+    class="w-32 h-32 object-cover mx-auto mb-4 rounded"
+  >
+  
+  <h2 class="text-lg font-semibold text-center mb-2"><%= product.product_name %></h2>
+  
+  <div class="text-sm text-gray-700 space-y-1">
+    <p><strong>Category:</strong> <%= product.product_category %></p>
+    <p><strong>Price:</strong> ₱<%= product.price %></p>
+    <p><strong>Quantity:</strong> <%= product.quantity %></p>
+    <p><strong>Added:</strong> <%= product.added_date.toDateString() %></p>
+    <p><strong>Added By:</strong> <%= product.added_by %></p>
+    <p><strong>Company:</strong> <%= product.from_company %></p>
+  </div>
+</div>
+  <% }) %>
+<% } %>
