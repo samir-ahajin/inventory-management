@@ -7,7 +7,7 @@ module.exports = {
     res.render("partials/dashboard", { layout: false });
     } ,
     getItemsPage:(req, res) => {
-     res.render("partials/items", { layout: false });
+     res.render("partials/items", { layout: false,success: false, message: null,searchData:null });
     },
     getProductsPage:async(req,res)=>{
      const selectedCategory = req.query.category || "all";

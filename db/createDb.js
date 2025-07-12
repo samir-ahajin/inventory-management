@@ -1,7 +1,7 @@
 const {Client} = require('pg');
 require('dotenv').config();
 const SQL = `
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   user_name VARCHAR(100) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE users (
   added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
   id SERIAL PRIMARY KEY,
   product_name VARCHAR(100) NOT NULL,
   product_category VARCHAR(100) NOT NULL,
@@ -18,6 +18,7 @@ CREATE TABLE products (
   quantity INTEGER,
   image_sample TEXT,
   added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   updated_date TIMESTAMP,
   from_company VARCHAR(100),
   added_by INTEGER
 );

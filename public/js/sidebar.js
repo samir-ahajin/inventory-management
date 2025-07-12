@@ -12,7 +12,7 @@ function loadContent(page) {
   const browserUrl = '/' + cleanPage;           // "/products"
   const fetchUrl = '/partials/' + cleanPage;     // "/partial/products" ← used only for fetch
 
-  console.log('Fetching:', fetchUrl);
+  // console.log('Fetching:', fetchUrl);
   history.pushState({}, '', browserUrl);        // This updates the URL shown in the browser
 
   fetch(fetchUrl)                               // Only used to fetch partial content
@@ -26,7 +26,10 @@ function loadContent(page) {
       main.innerHTML = html;
 
       switch (cleanPage) {
-        case 'items': initTabs?.(); break;
+        case 'items': 
+            initTabs?.(); 
+            loadItemsFormScript?.();
+            break;
         case 'products': initProductFilter?.(); break;
       }
     })
@@ -39,6 +42,7 @@ function loadContent(page) {
 
 // Browser back/forward
 window.onpopstate = function () {
+  console.log(location.pathname)
   const path = location.pathname.slice(1);
   if (path) loadContent(path);
 };
