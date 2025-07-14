@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  animation: ripple-animation 0.6s linear;
+  transform: scale(0);
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.searchValue {
+  position: relative; /* Required for ripple positioning */
+  overflow: hidden;   /* Hide overflow of ripple outside the container */
+}

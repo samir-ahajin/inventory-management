@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS products (
   added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    updated_date TIMESTAMP,
   from_company VARCHAR(100),
-  added_by INTEGER
+  added_by INTEGER,
+  updated_by INTEGER
 );
 
 -- ✅ Insert users first
