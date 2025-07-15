@@ -29,7 +29,7 @@ function loadItemsFormScript() {
     updateForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const formData = new FormData(this);
-
+      console.log('Update form data:', formData);
       const res = await fetch('/items/update', {
         method: 'POST',
         body: formData
@@ -66,8 +66,8 @@ function loadItemsFormScript() {
     createRipple(e, li); // 👈 Add ripple effect
 
     const item = li.dataset;
-    console.log('Clicked element:', li);
-    console.log(item);
+    // console.log('Clicked element:', li);
+    // console.log(item);
 
     fillUpdateForm({
       id: item.id,
@@ -83,21 +83,7 @@ function loadItemsFormScript() {
     });
   }
  
-  //   searchResults.addEventListener('click', function (searchVal) {
-  //   console.log('Clicked element:', searchVal);
-  //     // Check if the clicked element is a list item with a data-id attribute
-  //   // if (e.target && e.target.matches('li[data-id]')) {
-  //   //     const item = e.target.dataset;
-
-  //   //     fillUpdateForm({
-  //   //       id: item.id,
-  //   //       name: item.name,
-  //   //       quantity: item.quantity,
-  //   //       category: item.category,
-  //   //       price: item.price
-  //   //     });
-  //   //   }
-  // })
+ 
 }
 
 // ✅ Autofill form on item click
@@ -111,6 +97,7 @@ function fillUpdateForm(itemData) {
   updateForm.querySelector('[name="quantity"]').value = itemData.quantity;
   updateForm.querySelector('[name="category"]').value = itemData.category;
   updateForm.querySelector('[name="price"]').value = itemData.price;
+
 
   // Optional: Add or update hidden input for ID
   let idInput = updateForm.querySelector('[name="id"]');

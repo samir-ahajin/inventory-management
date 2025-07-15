@@ -32,9 +32,50 @@ async function insertNewProduct(prod) {
     return insertData.rows[0];
 
 }
+async function updateProduct(prod) {
+    console.log("Updating product with data:", prod);
+  const query = `
+WITH existing AS (
+  SELECT 1
+  FROM products
+  WHERE 
+    id = $1 AND
+    product_name = $2 AND
+    product_category = $3 AND
+    price = $4 AND
+    quantity = $5 AND
+    (image_sample = $6 OR $6 IS NULL)
+),
+updated AS (
+  UPDATE products
+  SET 
+    product_name = $2,
+    product_category = $3,
+    price = $4,
+    quantity = $5,
+    updated_by = 1,
+    updated_date = CURRENT_TIMESTAMP,
+    image_sample = COALESCE($6, image_sample)
+  WHERE id = $1 AND NOT EXISTS (SELECT 1 FROM existing)
+  RETURNING 'updated' AS status
+)
+SELECT * FROM updated
+UNION
+SELECT 'no updates' AS status WHERE NOT EXISTS (SELECT 1 FROM updated);
+`;
+const res = await pool.query(query, [prod.id,prod.product_name, prod.category, prod.price, prod.quantity, prod.image_url]);
+
+const status = res.rows[0].status;
+if (status === 'updated') {
+  return true; // Indicating that the product was updated
+} else {
+  return false;
+}
+}
 module.exports = {
         getList,
         getValue,
         getCategories,
-        insertNewProduct
+        insertNewProduct,
+        updateProduct
 }

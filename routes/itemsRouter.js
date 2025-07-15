@@ -16,6 +16,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 itemsRouter.post('/add',upload.single('image'),itemsController.itemAddPost)
-itemsRouter.post('/update',itemsController.itemUpdatePost)
+itemsRouter.post('/update',upload.single('image'),itemsController.itemUpdatePost)
 itemsRouter.post('/search',itemsController.itemSearchPost)
 module.exports = itemsRouter;
