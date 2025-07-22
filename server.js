@@ -31,6 +31,11 @@ app.use('/partials',partialsRouter)
 app.use('/products',productRouter)
 app.use("/items",itemRouter)
 
+app.use((req, res) => {
+
+     res.redirect('/').render('index',{title:'Home',script:''})
+
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,()=>{

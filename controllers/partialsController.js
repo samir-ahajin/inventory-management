@@ -15,7 +15,7 @@ module.exports = {
 
      const categories = await db.getCategories();
 
-     console.log(categories)
+    //  console.log(categories)
 
      res.render("pages/products", { layout: false , categories,
     selectedCategory,

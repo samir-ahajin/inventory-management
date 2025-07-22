@@ -6,7 +6,7 @@ async function getList(category){
 }
 
 async function getValue(value){
-    console.log('Searching for:', value);
+    // console.log('Searching for:', value);
     const {rows} = await pool.query(`
         SELECT * FROM products
         WHERE 
@@ -33,7 +33,7 @@ async function insertNewProduct(prod) {
 
 }
 async function updateProduct(prod) {
-    console.log("Updating product with data:", prod);
+    // console.log("Updating product with data:", prod);
   const query = `
 WITH existing AS (
   SELECT 1
@@ -72,10 +72,18 @@ if (status === 'updated') {
   return false;
 }
 }
+
+async function deleteProd(id) {
+  const deleteData = await pool.query(`DELETE from products where id = $1 RETURNING *`,[id])
+
+  return deleteData.rows[0];
+  
+}
 module.exports = {
         getList,
         getValue,
         getCategories,
         insertNewProduct,
-        updateProduct
+        updateProduct,
+        deleteProd
 }

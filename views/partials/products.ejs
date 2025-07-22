@@ -3,21 +3,31 @@
   <div class="col-span-full text-gray-500">No products found.</div>
 <% } else { %>
   <% products.forEach(product => { %>
-    <div class="p-6 bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-xl shadow-lg w-full max-w-sm transition-transform transform hover:scale-105 hover:shadow-2xl">
-      <img 
-        src="<%= product.image_sample %>" 
-        alt="<%= product.product_name %>" 
-        class="w-32 h-32 object-cover mx-auto mb-4 rounded-full border-4 border-indigo-100 shadow"
-      >
-      <h2 class="text-xl font-bold text-center mb-2 text-indigo-700 tracking-wide"><%= product.product_name %></h2>
-      <div class="text-sm text-gray-700 space-y-1 px-2">
-        <p><span class="font-semibold text-indigo-600">Category:</span> <%= product.product_category %></p>
-        <p><span class="font-semibold text-indigo-600">Price:</span> ₱<%= product.price %></p>
-        <p><span class="font-semibold text-indigo-600">Quantity:</span> <%= product.quantity %></p>
-        <p><span class="font-semibold text-indigo-600">Added:</span> <%= product.added_date.toDateString() %></p>
-        <p><span class="font-semibold text-indigo-600">Added By:</span> <%= product.added_by %></p>
-        <p><span class="font-semibold text-indigo-600">Company:</span> <%= product.from_company %></p>
-      </div>
-    </div>
+   <div class="group p-4 bg-white rounded shadow w-full max-w-sm transition-colors duration-200 hover:bg-blue-600 hover:text-white">
+  <img 
+    src="<%= product.image_sample %>" 
+    alt="<%= product.product_name %>" 
+    class="w-32 h-32 object-cover mx-auto mb-4 rounded"
+  >
+  <h2 class="text-lg font-semibold text-center mb-2"><%= product.product_name %></h2>
+  <div class="text-sm text-gray-700 space-y-1">
+    <p class="group-hover:text-white"><strong class="text-blue-600 group-hover:text-white">Category:</strong> <%= product.product_category %></p>
+    <p class="group-hover:text-white"><strong class="text-blue-600 group-hover:text-white">Price:</strong> ₱<%= product.price %></p>
+    <p class="group-hover:text-white"><strong class="text-blue-600 group-hover:text-white">Quantity:</strong> <%= product.quantity %></p>
+    <p class="group-hover:text-white"><strong class="text-blue-600 group-hover:text-white">Added:</strong> <%= product.added_date.toDateString() %></p>
+    <p class="group-hover:text-white"><strong class="text-blue-600 group-hover:text-white">Added By:</strong> <%= product.added_by %></p>
+   
+    <p class="group-hover:text-white"><strong class="text-blue-600 group-hover:text-white">Company:</strong> <%= product.from_company %></p>
+  </div>
+<!-- Delete Button -->
+  <div class="mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+    <button 
+      class="deleteButton px-4 py-2 text-red-600 border border-red-600 rounded hover:bg-red-600 hover:text-white transition-colors duration-200"
+      data-id = "<%= product.id %>"
+    >
+      Delete Record
+    </button>
+  </div>
+</div>
   <% }) %>
 <% } %>

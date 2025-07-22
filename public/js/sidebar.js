@@ -85,11 +85,16 @@ function initProductFilter() {
       .then(res => res.text())
       .then(html => {
         productList.innerHTML = html;
+        
       })
       .catch(err => {
         productList.innerHTML = `<div class="text-red-500">Failed to load products.</div>`;
         console.error("Error loading products:", err);
       });
   });
+
+
 }
+
+
 

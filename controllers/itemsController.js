@@ -26,7 +26,7 @@ module.exports = {
         from_company:'test',// company from the user table 
         added_by:1//id of the current user
         }
-        console.log(prod);
+        // console.log(prod);
 
        try {
             if (final_url) {
@@ -72,13 +72,13 @@ module.exports = {
         try {
             if (final_update) {
                     const itemUpdated = await db.updateProduct(final_update);
-                    console.log("updated added:", itemUpdated);
+                    // console.log("updated added:", itemUpdated);
 
                 // Delete the uploaded image
                 if( filePath){
                 fs.unlink(filePath, (err) => {
                     if (err) {
-                        console.error('Failed to delete original file:', err);
+                        // console.error('Failed to delete original file:', err);
                     } else {
                         console.log('Original file deleted.');
                     }
@@ -122,4 +122,22 @@ module.exports = {
 
 
         },
+    itemDelete:async(req,res)=>{
+         const updateID = req.params.id;
+        //  console.log(updateID);
+        // console.log("delete request received",updateID);
+        try{
+
+        
+        const itemDeleted = await db.deleteProd(updateID);
+        console.log("Item deleted:", itemDeleted);
+        res.json({ success: itemDeleted, message: itemDeleted
+            ? '✅ Records Deleted'
+            : '❌ Unable to Delete!'});
+            }catch(err){
+                 res.status(500).send('Delete Failed '+err);    
+            }
+                
+       
+    }
 }

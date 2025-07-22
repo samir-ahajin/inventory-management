@@ -2,6 +2,7 @@ function loadItemsFormScript() {
   const addForm = document.getElementById('addForm');
   const updateForm = document.getElementById('updateForm');
   const searchForm = document.getElementById('searchForm');
+  const searchButton = document.getElementById('searchTriggerBtn')
 
   if (addForm) {
     addForm.addEventListener('submit', async function (e) {
@@ -14,7 +15,7 @@ function loadItemsFormScript() {
       });
 
       const result = await res.json();
-      console.log(result);
+      // console.log(result);
       if (result.success) {
                // ✅ Clears all fields
       addForm.reset();   
@@ -26,16 +27,20 @@ function loadItemsFormScript() {
   }
 
   if (updateForm) {
+    
     updateForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       const formData = new FormData(this);
-      console.log('Update form data:', formData);
+      // console.log('Update form data:', formData);
       const res = await fetch('/items/update', {
         method: 'POST',
         body: formData
       });
 
       const result = await res.json();
+
+      searchForm.requestSubmit();//resubmit search form to refresh results
+    
       alert(result.message);
     });
   }

@@ -18,4 +18,5 @@ const upload = multer({ storage });
 itemsRouter.post('/add',upload.single('image'),itemsController.itemAddPost)
 itemsRouter.post('/update',upload.single('image'),itemsController.itemUpdatePost)
 itemsRouter.post('/search',itemsController.itemSearchPost)
+itemsRouter.delete('/delete/:id',itemsController.itemDelete)
 module.exports = itemsRouter;

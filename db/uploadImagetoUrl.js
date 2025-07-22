@@ -13,7 +13,7 @@ async function uploadImage(filePath) {
   });
 
   const url = response.data.data.url;
-  console.log('Uploaded Image URL:', url);
+  // console.log('Uploaded Image URL:', url);
 
   // You can now insert `url` into your database
   return url;
